@@ -503,7 +503,7 @@
 <div class="container">
     <div class="row">
         <div class="col" style="max-height: 500px; margin-bottom: 36px; margin-left: 5%;">
-            <img id="input_image" class="shadow" style="min-height: 340px;" src="./global/face_beauty4.jpg" />
+            <img id="input_image2" class="shadow" style="min-height: 340px;" src="./global/face_beauty4.jpg" />
         </div>
 
 <div class="col" style="margin-left: 20px; min-width: 360px; margin-bottom: 36px; margin-top: 25px;">
@@ -647,7 +647,7 @@
             var fr = new FileReader();
             fr.readAsDataURL(img_file);
             fr.onloadend = function(){
-              document.getElementById("input_image").src = fr.result;
+              document.getElementById("input_image2").src = fr.result;
             }
                     probs = res["prob"];
                     let data = probs.map(parseFloat);
@@ -685,7 +685,7 @@
             success:function(res){
                 document.getElementById("overlay").style.display = "none";
                 console.log(res)
-                document.getElementById("input_image").src = "./global/" + name + ".jpg";
+                document.getElementById("input_image2").src = "./global/" + name + ".jpg";
             probs = res["res"]
             let data = probs.map(parseFloat);
             plot_chart2(data)
