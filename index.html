@@ -483,7 +483,7 @@
 <div class="container" style="margin-top: 24px; margin-left: 8px; margin-bottom: 56px;">
 
     <div>
-        <input type="file" id="btn_file" style="display:none" onchange="imgChange(this)" accept="image/png,image/gif,image/jpeg">
+        <input type="file" id="btn_file" style="display:none" onchange="imgChange2(this)" accept="image/png,image/gif,image/jpeg">
         <button type="button" class="btn btn-dark btn-lg" onclick="F_Open_dialog()">Upload</button>
     </div>
 
@@ -631,10 +631,50 @@
       }
     
 
+
+
+      function sendFromData2(fd, img_file) {
+            $.ajax({
+                type:'POST',
+                url: "https://exped1230.cpolar.top/scu_upload",
+                data: fd,
+                cache:false,
+                contentType: false,
+                processData: false,
+                success:function(res){
+                    document.getElementById("overlay").style.display = "none";
+                    console.log(res)
+            var fr = new FileReader();
+            fr.readAsDataURL(img_file);
+            fr.onloadend = function(){
+              document.getElementById("input_image").src = fr.result;
+            }
+                    probs = res["prob"];
+                    let data = probs.map(parseFloat);
+                    plot_chart(data)
+                },
+                error: function(data){
+                    document.getElementById("overlay").style.display = "none";
+                    alert("Sorry, something went wrong.");
+                }
+            });
+        }
+    
+        function imgChange2(self) {
+            if (self.files.length < 1) {
+                return;
+            }
+            document.getElementById("overlay").style.display = "flex";
+            var img_file = self.files[0];
+            var formData = new FormData();
+            formData.append("img", img_file);
+            sendFromData2(formData, img_file);
+        }
+
       function exampleImage2(name) {
             document.getElementById("overlay").style.display = "flex";
             var formData = new FormData();
-        formData.append('img_path', "./OLDL/examples/"+name+".jpg")
+            formData.append('img_path', "./OLDL/scu/examples/"+name+".jpg")
         $.ajax({
             type:'POST',
           url: "https://exped1230.cpolar.top/scu_example",
