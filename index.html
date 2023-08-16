@@ -118,7 +118,7 @@
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">Changsong Wen</a><sup></sup>,</span>
+                <a href="https://downdric.github.io/" target="_blank">Changsong Wen</a><sup></sup>,</span>
                 <span class="author-block">
                   <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Xin Zhang</a><sup></sup>,</span>
                   <span class="author-block">
@@ -168,6 +168,15 @@
                   </a>
                 </span>
 
+                <span class="link-block">
+                  <a href="https://downdric.github.io/" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Personal Page</span>
+                </a>
+              </span>
                 <!-- ArXiv abstract Link -->
                 <!-- <span class="link-block">
                   <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
@@ -555,7 +564,7 @@
         function sendFromData(fd, img_file) {
             $.ajax({
                 type:'POST',
-                url: "https://exped1230.cpolar.top/OLDL_upload",
+                url: "https://downdric23.github.io/OLDL_upload",
                 data: fd,
                 cache:false,
                 contentType: false,
@@ -594,11 +603,10 @@
         function exampleImage(name) {
             document.getElementById("overlay").style.display = "flex";
             var formData = new FormData();
-        formData.append('img_path', "./sentiment/examples/"+name+".jpg")
+        formData.append('img_path', "./OLDL/ava/examples/"+name+".jpg")
         $.ajax({
             type:'POST',
-            // url: "http://47.111.31.20:8083/emotion_example_img",
-          url: "https://exped1230.cpolar.top/OLDL_example",
+          url: "https://downdric23.github.io/ava_example",
             data: formData,
             cache:false,
             contentType: false,
@@ -607,7 +615,7 @@
                 document.getElementById("overlay").style.display = "none";
                 console.log(res)
                 document.getElementById("input_image").src = "./global/" + name + ".jpg";
-            probs = res["prob"]
+            probs = res["res"]
             let data = probs.map(parseFloat);
             plot_chart(data)
             },
@@ -629,8 +637,7 @@
         formData.append('img_path', "./OLDL/examples/"+name+".jpg")
         $.ajax({
             type:'POST',
-            // url: "http://47.111.31.20:8083/emotion_example_img",
-          url: "https://exped1230.cpolar.top/OLDL_example",
+          url: "https://downdric23.github.io/scu_example",
             data: formData,
             cache:false,
             contentType: false,
@@ -639,7 +646,7 @@
                 document.getElementById("overlay").style.display = "none";
                 console.log(res)
                 document.getElementById("input_image").src = "./global/" + name + ".jpg";
-            probs = res["prob"]
+            probs = res["res"]
             let data = probs.map(parseFloat);
             plot_chart2(data)
             },
